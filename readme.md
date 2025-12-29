@@ -25,9 +25,11 @@ Three 4-layer message-passing GNN regressors (GraphNorm + global mean pooling + 
 ## Message Passing
 
 A standard message-passing layer updates node i by mixing its current features with aggregated neighbor messages:
+
 $$
 h_i^{(k+1)} = \phi\Big(\Lambda\big(h_i^{(k)}, \ \bigoplus_{j \in \mathcal{N}(i)} \mu_{ij}\big)\Big)
 $$
+
 - $h_i^{(k)}$: node i features at layer k
 - $\mathcal{N}(i)$: 1-hop neighbors of i
 - $\mu_{ij}$: “message” from neighbor j to i (model-dependent)
@@ -42,9 +44,11 @@ $$
 ## 1) GCN -- Graph Convolutional Network
 
 A common matrix form of a GCN layer:
+
 $$
 H^{(k+1)} = \sigma\Big(\tilde{D}^{-\frac12}\tilde{A}\tilde{D}^{-\frac12} H^{(k)} W^{(k)}\Big)
 $$
+
 Paper: SEMI-SUPERVISED CLASSIFICATION WITH GRAPH CONVOLUTIONAL NETWORKS --> https://arxiv.org/pdf/1609.02907
 
 **Variables**
@@ -59,6 +63,7 @@ Paper: SEMI-SUPERVISED CLASSIFICATION WITH GRAPH CONVOLUTIONAL NETWORKS --> http
 ## 2) GINE -- Graph Isomorphism Network with Edge features (GINE)
 
 A common GINE-style update:
+
 $$
 h_i^{(k+1)} = \text{MLP}^{(k)}\Big((1+\epsilon)\,h_i^{(k)} + \sum_{j\in \mathcal{N}(i)} \text{ReLU}\big(h_j^{(k)} + e_{ij}\big)\Big)
 $$
@@ -76,11 +81,13 @@ Paper: HOW POWERFUL ARE GRAPH NEURAL NETWORKS? --> https://arxiv.org/pdf/1810.00
 ## 3) Edge-aware GATv2 -- Graph Attention Network v2 (with edge attributes)
 
 Attention-weighted aggregation:
+
 $$
 h_i^{(k+1)} = \sigma\Big(\sum_{j\in \mathcal{N}(i)} \alpha_{ij}\, W h_j^{(k)}\Big)
 $$
 
 Attention coefficients (edge-aware form):
+
 $$
 \alpha_{ij} = \text{softmax}_{j}\Big(\text{LeakyReLU}\big(a^\top [W h_i^{(k)} \,\Vert\, W h_j^{(k)} \,\Vert\, U e_{ij}]\big)\Big)
 $$
