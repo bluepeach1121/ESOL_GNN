@@ -1,6 +1,7 @@
 # ESOL GNN
 
 ESOL (“Delaney” dataset) is a MoleculeNet benchmark dataset for molecular property prediction where each molecule has a target aqueous solubility value (reported as log-scale solubility, logS). MoleculeNet is a collection of molecular datasets used to compare models across tasks like classification and regression. We can represent each molecule as a graph: atoms are nodes and chemical bonds are edges, perfect for Graph Neural Networks (GNNs). I used PyTorch Geometric (PyG) to handle graph batches, message-passing layers, and pooling, and RDKit to parse SMILES strings (text molecule descriptions) and convert them into molecule graphs. 
+Note: The cell has plots but they aren't showing because of some problem with importing Jupyter cells that have outputs into GitHub. (11/1/2026)
 
 ---
 
